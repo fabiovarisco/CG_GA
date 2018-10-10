@@ -118,7 +118,7 @@ int Scene::init(string base_path, string obj_filename)
 	glBufferData(GL_ARRAY_BUFFER, mesh->getMappings().size() * sizeof(glm::vec2), mesh->getMappings().data(), GL_STATIC_DRAW);
 	*/
 	for (Group* g : this->mesh->getGroups()) {
-		g->setup(mesh, vVBO, nVBO, tVBO);
+		g->setup(mesh);
 	}
 
 	//for (Material* m : this->materials.begin()) {
@@ -144,7 +144,8 @@ int Scene::init(string base_path, string obj_filename)
 		}
 		else
 		{
-			std::cout << "Failed to load texture" << std::endl;
+			
+			std::cout << "Failed to load texture: " << filepath << std::endl;
 		}
 		stbi_image_free(data);
 	}
@@ -163,7 +164,7 @@ int Scene::init(string base_path, string obj_filename)
 	shader->setMat4("view", camera->GetViewMatrix());
 	shader->setMat4("model", Model);
 	shader->setVec3("lightColor", glm::vec3(1.0, 1.0, 1.0));
-	shader->setVec3("lightPos", glm::vec3(1.2, 1.0, 4.0));
+	shader->setVec3("lightPos", this->lightPos);
 
 	return 0;
 }
@@ -191,19 +192,17 @@ void Scene::draw() {
 
 		glm::mat4 projection = glm::perspective(glm::radians(camera->Zoom), (float)width / (float)height, 0.1f, 100.0f);
 		shader->setMat4("projection", projection);
-
-		//glActiveTexture(GL_TEXTURE0);
-		//glBindTexture(GL_TEXTURE_2D, texture);
+		shader->setVec3("viewPos", camera->Position);
 		glBindVertexArray(VAO);
 
 		for (Group* g : mesh->getGroups()) {
 			
 			if (this->materials.find(g->getMaterial()) != this->materials.end()) {
-				glActiveTexture(GL_TEXTURE0);
-				glBindTexture(GL_TEXTURE_2D, this->materials[g->getMaterial()]->textureId);
+				g->draw(this->materials[g->getMaterial()], shader);
 			}
-			//TODO bind texture before drawing
-			g->draw(vVBO, nVBO, tVBO);
+			else {
+				g->draw(NULL, shader);
+			}
 		}
 
 		// Swap buffers

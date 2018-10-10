@@ -1,13 +1,2 @@
-﻿  Scene.cpp
-c:\users\i844141\documents\unisinos\2018-2\computacao_grafica\aula01\aula01\scene.cpp(27): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\i844141\documents\unisinos\2018-2\computacao_grafica\aula01\aula01\scene.cpp(28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\i844141\documents\unisinos\2018-2\computacao_grafica\aula01\aula01\scene.cpp(32): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\i844141\documents\unisinos\2018-2\computacao_grafica\aula01\aula01\scene.cpp(33): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\i844141\documents\unisinos\2018-2\computacao_grafica\aula01\aula01\scene.cpp(35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\i844141\documents\unisinos\2018-2\computacao_grafica\aula01\aula01\scene.cpp(36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\i844141\documents\unisinos\2018-2\computacao_grafica\aula01\aula01\scene.cpp(44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\i844141\documents\unisinos\2018-2\computacao_grafica\aula01\aula01\scene.cpp(179): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  scene_test.cpp
-  Generating Code...
-c:\users\i844141\documents\unisinos\2018-2\computacao_grafica\aula01\aula01\scene.cpp(90): warning C4715: 'Scene::setupGLFW': not all control paths return a value
+﻿  scene_test.cpp
   Aula01.vcxproj -> C:\Users\I844141\Documents\Unisinos\2018-2\computacao_grafica\Aula01\Debug\Aula01.exe

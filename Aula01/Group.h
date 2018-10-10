@@ -8,6 +8,8 @@
 #include <glm/vec3.hpp>
 
 #include "Face.h"
+#include "Material.h"
+#include "Shader.h"
 class Mesh;
 
 #pragma once
@@ -28,8 +30,8 @@ public:
 	void setFaces(std::vector<Face*> i_faces);
 	GLuint vEBO, nEBO, tEBO;
 	int nVertices, nNormals, nTexts;
-	void setup(Mesh* mesh, GLuint vVBO, GLuint nVBO, GLuint tVBO);
-	void draw(GLuint vVBO, GLuint nVBO, GLuint tVBO);
+	void setup(Mesh* mesh);
+	void draw(Material* material, Shader* shader);
 
 
 };

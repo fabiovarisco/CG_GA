@@ -41,11 +41,13 @@ class Scene
 {
 private:
 	
-	Camera* camera = new Camera(glm::vec3(0.0f, 0.0f, 3.0f));
+	Camera* camera = new Camera(glm::vec3(0.0f, 0.0f, 15.0f));
 
 	// timing
 	float deltaTime = 0.0f;	// time between current frame and last frame
 	float lastFrame = 0.0f;
+
+	glm::vec3 lightPos = glm::vec3(1.0, 2.5, 10.0);
 
 	void processInput(GLFWwindow *window);
 	void static mouse_callback(GLFWwindow* window, double xpos, double ypos);

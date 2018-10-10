@@ -35,7 +35,7 @@ void Group::setFaces(std::vector<Face*> i_faces) {
 	faces = i_faces;
 }
 
-void Group::setup(Mesh* mesh, GLuint vVBO, GLuint nVBO, GLuint tVBO) {
+void Group::setup(Mesh* mesh) {
 	//std::vector<GLuint> vertices, normals, texts;
 	std::vector<glm::vec3> verticesD, normalsD;
 	std::vector<glm::vec2> textsD;
@@ -116,8 +116,17 @@ void Group::setup(Mesh* mesh, GLuint vVBO, GLuint nVBO, GLuint tVBO) {
 	*/
 }
 
-void Group::draw(GLuint vVBO, GLuint nVBO, GLuint tVBO) {
+void Group::draw(Material* material, Shader* shader) {
 
+	if (material != NULL) {
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, material->textureId);
+
+		shader->setVec3("ambient", material->ka);
+		shader->setVec3("diffuse", material->kd);
+		shader->setVec3("specular", material->ks);
+		shader->setFloat("shininess", material->ns);
+	}
 
 	glBindBuffer(GL_ARRAY_BUFFER, vEBO);
 	glEnableVertexAttribArray(0);
